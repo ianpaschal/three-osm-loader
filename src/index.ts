@@ -156,32 +156,6 @@ export default function (THREE) {
 //         },
 //         toDegrees() {
 //             // TODO: Add this function, even though it's not needed...?
-//         },
-//         getDistance( p1, p2 ) {
-//             /*
-//                 NOTE: This uses the haversine formula. Other implementations are
-//                 possible. In the future, the user can choose which option the loader
-//                 uses. This will also be related to whether the user intends to preserve
-//                 the spherical nature of the coordinates, or project them as a map.
-//             */
-
-//             var R = 6371e3; // metres
-//             var φ1 = p1.lat;
-//             var φ2 = p2.lat;
-//             var Δφ = p2.lat - p1.lat;
-//             var Δλ = p2.lon - p1.lon;
-
-//             var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ/2) * Math.sin(Δλ/2);
-//             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-//             var d = R * c;
-//             return d;
-//         },
-//         getBearing( p1, p2 ) {
-//             var y = Math.sin( p2.lon - p1.lon ) * Math.cos( p2.lat );
-//             var x = Math.cos( p1.lat ) * Math.sin( p2.lat ) - Math.sin( p1.lat ) * Math.cos( p2.lat ) * Math.cos( p2.lon - p1.lon );
-//             var brng = Math.atan2( y, x );
-//             return brng;
 //         }
 //     };
 // }
