@@ -20,17 +20,17 @@
   },
   "homepage": "https://github.com/ianpaschal/three-osm-loader#readme",
   "dependencies": {
-    "three": "^0.99.0",
-    "xml2js": "^0.4.19"
+    "three": "0.99.0",
+    "xml2js": "0.4.19"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.10",
-    "@types/three": "^0.93.12",
-    "eslint": "^5.9.0",
-    "jest": "^23.6.0",
-    "parcel-bundler": "^1.10.3",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.1",
-    "typescript-eslint-parser": "^21.0.2"
+    "@types/jest": "23.3.10",
+    "@types/three": "0.93.12",
+    "eslint": "5.9.0",
+    "jest": "23.6.0",
+    "parcel-bundler": "1.10.3",
+    "ts-jest": "23.10.5",
+    "typescript": "3.2.1",
+    "typescript-eslint-parser": "21.0.2"
   }
 }
