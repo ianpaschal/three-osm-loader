@@ -1,0 +1,36 @@
+{
+  "name": "three-osm-loader",
+  "version": "1.0.0",
+  "description": "Import Open Street Map",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --fix --ext .ts src/** tests/**",
+    "test": "jest --silent --config jest.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianpaschal/three-osm-loader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianpaschal/three-osm-loader/issues"
+  },
+  "homepage": "https://github.com/ianpaschal/three-osm-loader#readme",
+  "dependencies": {
+    "three": "^0.99.0",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/three": "^0.93.12",
+    "eslint": "^5.9.0",
+    "jest": "^23.6.0",
+    "parcel-bundler": "^1.10.3",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.1",
+    "typescript-eslint-parser": "^21.0.2"
+  }
+}
