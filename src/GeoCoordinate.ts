@@ -1,4 +1,4 @@
-
+import {Vector2} from "three"
 
 class GeoCoordinate {
     _lat: number;
@@ -63,14 +63,29 @@ class GeoCoordinate {
         return brng;
     }
 
-    /**
-     * The components of the vector are rounded down to the nearest integer value.
-     */
-    floor(): GeoCoordinate {
-        return this;
-    }
+    // /**
+    //  * The components of the vector are rounded down to the nearest integer value.
+    //  */
+    // floor(): GeoCoordinate {
+    //     this.lat = Math.floor(this.lat)
+    //     this.lon = Math.floor(this.lon)
+    //     return this;
+    // }
 
-    
+    /**
+     * Convert this coordinate to an xyz coordinate relative to some other lat/lon coordinate
+     * @param origin 
+     */
+    asCartesian( origin: GeoCoordinate ): Vector2 {
+
+        const bearing = origin.bearingTo(this);
+        const distance = origin.distanceTo(this);
+
+        return new Vector2(
+            distance * Math.cos(bearing),
+            distance * Math.sin(bearing)
+        );
+    }
 
 }
 
