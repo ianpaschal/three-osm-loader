@@ -1,8 +1,7 @@
 let Three = require( "three" );
 // You can name it "THREE" instead of "Three" if you want, but it's just another
 // module and therefore it has no business having an all-capital name.
-let thingy = require( "../dist/index.js" ).default;
-console.log("module", thingy)
+
 let OSMLoader = require( "../dist/index.js" ).default( Three );
 
 let scene = new Three.Scene();
