@@ -3,6 +3,7 @@ logs
 npm-debug.log*
 node_modules/
 .npm
+.cache
 .eslintcache
 .env
 dist/
