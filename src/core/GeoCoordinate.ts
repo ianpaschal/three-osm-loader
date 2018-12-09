@@ -1,12 +1,14 @@
-import { Vector2 } from "three";
+import { Vector3 } from "three";
 
 class GeoCoordinate {
 	_lat: number;
 	_lon: number;
+	_ele: number;
 
-	constructor( lat: number, lon: number ) {
+	constructor( lat: number, lon: number, ele?: number ) {
 		this._lat = lat;
 		this._lon = lon;
+		this._ele = ele || 0;
 	}
 
 	get lat() {
@@ -76,14 +78,22 @@ class GeoCoordinate {
 	 * Convert this coordinate to an xyz coordinate relative to some other lat/lon coordinate
 	 * @param origin 
 	 */
-	asCartesian( origin: GeoCoordinate ): Vector2 {
+	asCartesian( origin: GeoCoordinate ): Vector3 {
 
 		const bearing = origin.bearingTo( this );
 		const distance = origin.distanceTo( this );
 
-		return new Vector2(
+		if ( this._ele ) {
+			return new Vector3(
+				distance * Math.cos( bearing ),
+				distance * Math.sin( bearing ),
+				this._ele
+			);
+		}
+		return new Vector3(
 			distance * Math.cos( bearing ),
-			distance * Math.sin( bearing )
+			distance * Math.sin( bearing ),
+			0
 		);
 	}
 
