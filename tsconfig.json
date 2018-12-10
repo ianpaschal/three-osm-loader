@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "module": "commonjs",
-    "outDir": "dist",
+    "outDir": "./dist",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es2015",
+    "declaration": true
   },
   "files": [
     "./src/index.ts"

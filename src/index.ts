@@ -1,5 +1,5 @@
 import OSMLoader from "./core/OSMLoader";
 
-export default function ( THREE ) {
+export = function ( THREE ) {
 	THREE.OSMLoader = OSMLoader;
 }
