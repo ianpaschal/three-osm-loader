@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.6.1 (12154 thorn-03.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <bounds minlat="44.8797000" minlon="5.7545000" maxlat="44.9224000" maxlon="5.8481000"/>
+ <way id="224536712" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:29:57Z" user="robertbarbier" uid="279024">
+  <nd ref="2333602242"/>
+  <nd ref="2333602236"/>
+  <nd ref="2333602317"/>
+  <nd ref="2333602323"/>
+  <nd ref="2333602242"/>
+  <tag k="building" v="yes"/>
+  <tag k="source" v="cadastre-dgi-fr source : Direction Générale des Finances Publiques - Cadastre. Mise à jour : 2013"/>
+ </way>
+ <node id="2333602242" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:22:18Z" user="robertbarbier" uid="279024" lat="44.9027070" lon="5.7951620"/>
+ <node id="2333602236" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:22:18Z" user="robertbarbier" uid="279024" lat="44.9026920" lon="5.7952610"/>
+ <node id="2333602317" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:22:20Z" user="robertbarbier" uid="279024" lat="44.9028030" lon="5.7952930"/>
+ <node id="2333602323" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:22:20Z" user="robertbarbier" uid="279024" lat="44.9028180" lon="5.7951940"/>
+ <way id="224536713" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:29:57Z" user="robertbarbier" uid="279024">
+  <nd ref="2333604010"/>
+  <nd ref="2333604121"/>
+  <nd ref="2333604156"/>
+  <nd ref="2333604064"/>
+  <nd ref="2333604010"/>
+  <tag k="building" v="yes"/>
+  <tag k="source" v="cadastre-dgi-fr source : Direction Générale des Finances Publiques - Cadastre. Mise à jour : 2013"/>
+ </way>
+ <node id="2333604010" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:22:40Z" user="robertbarbier" uid="279024" lat="44.9039600" lon="5.7855590"/>
+ <node id="2333604121" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:22:41Z" user="robertbarbier" uid="279024" lat="44.9039930" lon="5.7855830"/>
+ <node id="2333604156" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:22:41Z" user="robertbarbier" uid="279024" lat="44.9040080" lon="5.7855370"/>
+ <node id="2333604064" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:22:40Z" user="robertbarbier" uid="279024" lat="44.9039750" lon="5.7855120"/>
+ <way id="224536714" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:29:57Z" user="robertbarbier" uid="279024">
+  <nd ref="2333600848"/>
+  <nd ref="2333600931"/>
+  <nd ref="2333600980"/>
+  <nd ref="2333600923"/>
+  <nd ref="2333600848"/>
+  <tag k="building" v="yes"/>
+  <tag k="source" v="cadastre-dgi-fr source : Direction Générale des Finances Publiques - Cadastre. Mise à jour : 2013"/>
+ </way>
+ <node id="2333600848" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:21:51Z" user="robertbarbier" uid="279024" lat="44.9013380" lon="5.7844010"/>
+ <node id="2333600931" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:21:53Z" user="robertbarbier" uid="279024" lat="44.9013940" lon="5.7844660"/>
+ <node id="2333600980" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:21:54Z" user="robertbarbier" uid="279024" lat="44.9014430" lon="5.7843730"/>
+ <node id="2333600923" visible="true" version="1" changeset="16437130" timestamp="2013-06-05T20:21:53Z" user="robertbarbier" uid="279024" lat="44.9013900" lon="5.7843110"/>
+</osm>

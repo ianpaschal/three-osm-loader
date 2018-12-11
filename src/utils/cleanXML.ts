@@ -1,4 +1,5 @@
 import extractNum from "./extractNum";
+import { DefaultLoadingManager } from "three";
 /**
  * XML2JS gives us some ugly looking formatting. This cleans it up into a
  * tidier object.
@@ -6,48 +7,75 @@ import extractNum from "./extractNum";
 const cleanXML = function( obj ) {
 	for ( const property in obj ) {
 		if ( obj.hasOwnProperty( property ) ) {
-			if ( property === "$" ) {
-				for ( const metaprop in obj.$ ) {
-					if ( obj.$.hasOwnProperty( metaprop ) ) {
-						if ( typeof obj.$[ metaprop ] === "string" ) {
-							if ( obj.$[ metaprop ] === "yes" || obj.$[ metaprop ] === "true" ) {
-								obj[ metaprop ] = true;
-							} else if ( obj.$[ metaprop ] === "no" || obj.$[ metaprop ] === "false" ) {
-								obj[ metaprop ] = false;
-							} else {
-								obj[ metaprop ] = extractNum( obj.$[ metaprop ] );
-							}
-						}
-					}
-				}
-				delete obj.$;
-			} else if ( property === "tag" ) {
-				// Handle tags
-				obj.tags = {};
-				obj.tag.forEach( ( tag ) => {
-					let value;
-					if ( tag.$.v === "yes" ) {
-						value = true;
-					} else if ( tag.$.v === "no" ) {
-						value = false;
+
+			switch ( property ) {
+				case "$":
+					handle$( obj );
+					break;
+				case "nd":
+					handleNd( obj );
+					break;
+				case "tag":
+					handleTag( obj );
+					break;
+				default:
+					if ( Array.isArray( obj[ property ] ) ) {
+						// Handle other children arrays
+						obj[ property ].forEach( ( child ) => {
+							child = cleanXML( child );
+						});
 					} else {
-						value = tag.$.v;
+						// Do nothing with it
 					}
-					obj.tags[ tag.$.k ] = value;
-				});
-				// Clean up the old tag array
-				delete obj.tag;
-			} else if ( Array.isArray( obj[ property ] ) ) {
-				// Handle other children arrays
-				obj[ property ].forEach( ( child ) => {
-					child = cleanXML( child );
-				});
-			} else {
-				// Do nothing with it
+					break;
 			}
 		}
 	}
 	return obj;
 };
 
+function handle$( obj ) {
+	for ( const metaprop in obj.$ ) {
+		if ( obj.$.hasOwnProperty( metaprop ) ) {
+			if ( typeof obj.$[ metaprop ] === "string" ) {
+				if ( obj.$[ metaprop ] === "yes" || obj.$[ metaprop ] === "true" ) {
+					obj[ metaprop ] = true;
+				} else if ( obj.$[ metaprop ] === "no" || obj.$[ metaprop ] === "false" ) {
+					obj[ metaprop ] = false;
+				} else {
+					obj[ metaprop ] = extractNum( obj.$[ metaprop ] );
+				}
+			}
+		}
+	}
+	delete obj.$;
+}
+
+function handleTag( obj ) {
+	// Handle tags
+	obj.tags = {};
+	obj.tag.forEach( ( tag ) => {
+		let value;
+		if ( tag.$.v === "yes" ) {
+			value = true;
+		} else if ( tag.$.v === "no" ) {
+			value = false;
+		} else {
+			value = tag.$.v;
+		}
+		obj.tags[ tag.$.k ] = value;
+	});
+	// Clean up the old tag array
+	delete obj.tag;
+}
+
+function handleNd( obj ) {
+	// Handle refs
+	obj.refs = [];
+	obj.nd.forEach( ( nd ) => {
+		obj.refs.push( extractNum( nd.$.ref ) );
+	});
+	// Clean up the old ref array
+	delete obj.nd;
+}
 export default cleanXML;
