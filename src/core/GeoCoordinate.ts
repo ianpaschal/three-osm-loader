@@ -93,14 +93,14 @@ class GeoCoordinate {
 
 		if ( this._ele ) {
 			return new Vector3(
-				distance * Math.cos( bearing ),
 				distance * Math.sin( bearing ),
+				distance * Math.cos( bearing ),
 				this._ele
 			);
 		}
 		return new Vector3(
-			distance * Math.cos( bearing ),
 			distance * Math.sin( bearing ),
+			distance * Math.cos( bearing ),
 			0
 		);
 	}
