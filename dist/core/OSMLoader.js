@@ -70,7 +70,7 @@ class OSMLoader {
             if (way.tags && way.tags.building) {
                 // console.log( "Found a building with", way.nd, "nodes." );
                 const material = new three_1.LineBasicMaterial({
-                    color: 0x0000ff
+                    color: 0xffffff
                 });
                 const geometry = new three_1.Geometry();
                 way.refs.forEach((ref) => {

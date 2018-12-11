@@ -70,9 +70,9 @@ class GeoCoordinate {
         const bearing = origin.bearingTo(this);
         const distance = origin.distanceTo(this);
         if (this._ele) {
-            return new three_1.Vector3(distance * Math.cos(bearing), distance * Math.sin(bearing), this._ele);
+            return new three_1.Vector3(distance * Math.sin(bearing), distance * Math.cos(bearing), this._ele);
         }
-        return new three_1.Vector3(distance * Math.cos(bearing), distance * Math.sin(bearing), 0);
+        return new three_1.Vector3(distance * Math.sin(bearing), distance * Math.cos(bearing), 0);
     }
 }
 exports.default = GeoCoordinate;
