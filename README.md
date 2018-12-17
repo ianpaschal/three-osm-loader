@@ -1,5 +1,5 @@
 # three-osm-loader
-Import Open Street Map
+Import Open Street Map XML exports for visualization with the Three.js library.
 
 - [ ] Import roads and streets as `THREE.Line` instances
 - [ ] Import roads and streets as generic `THREE.Geometry` instances
