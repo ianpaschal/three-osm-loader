@@ -1,7 +1,7 @@
 const THREE = require( "three" );
 require( "../dist/index.js" )( THREE );
 const OrbitControls = require( "three-orbit-controls" )( THREE );
-console.log( OrbitControls );
+// console.log( OrbitControls );
 
 let camera;
 let controls;
@@ -14,31 +14,36 @@ animate();
 function init() {
 	scene = new THREE.Scene();
 	scene.background = new THREE.Color( 0xcccccc );
-	scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
+	// scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
 	renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
 	const aspect = window.innerWidth / window.innerHeight;
 	camera = new THREE.PerspectiveCamera( 60, aspect, 1, 1000 );
-	camera.position.set( 400, 200, 0 );
+	camera.position.set( 200, 0, 200 );
+	camera.up.set( 0, 0, 1 );
+	camera.lookAt( new THREE.Vector3() )
 	// controls
 	controls = new OrbitControls( camera, renderer.domElement );
-	controls.minDistance = 100;
+	controls.minDistance = 0;
 	controls.maxDistance = 500;
 	controls.maxPolarAngle = Math.PI / 2;
 
-	loadOSM();
+	var axesHelper = new THREE.AxesHelper( 5 );
+	scene.add( axesHelper );
+
+	loadOSM("centre-ville.xml");
 
 	// lights
-	const lightA = new THREE.DirectionalLight( 0xffffff );
-	lightA.position.set( 1, 1, 1 );
-	scene.add( lightA );
-	const lightB = new THREE.DirectionalLight( 0x002288 );
-	lightB.position.set( - 1, - 1, - 1 );
-	scene.add( lightB );
-	const lightC = new THREE.AmbientLight( 0x222222 );
-	scene.add( lightC );
+	// const lightA = new THREE.DirectionalLight( 0xffffff );
+	// lightA.position.set( 1, 1, 1 );
+	// scene.add( lightA );
+	// const lightB = new THREE.DirectionalLight( 0x002288 );
+	// lightB.position.set( - 1, - 1, - 1 );
+	// scene.add( lightB );
+	// const lightC = new THREE.AmbientLight( 0x222222 );
+	// scene.add( lightC );
 	//
 	window.addEventListener( "resize", onWindowResize, false );
 }
@@ -51,20 +56,22 @@ function animate() {
 	renderer.render( scene, camera );
 	requestAnimationFrame( animate );
 }
-function loadOSM() {
+function loadOSM(path ) {
 	const loader = new THREE.OSMLoader();
 
-	console.log( loader.load );
-
-	const path = "../map.xml";
 	const onError = function( err ) {
 		console.log( err );
 	};
+	const onProgress = function() {
+		// do nothing
+	};
 	const onLoad = function( result ) {
-		const material = new THREE.LineBasicMaterial({ color: 0xffff00 });
-		const line = new THREE.Line( result, material );
-		scene.add( line );
+		console.log("LINES", result );
+		result.forEach(obj=>{
+			scene.add( obj );
+		});
+		console.log("SCENE", scene)
 	};
 
-	loader.load( path, onError, onLoad );
+	loader.load( path, onError, onProgress, onLoad );
 }

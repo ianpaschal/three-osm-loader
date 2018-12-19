@@ -43,26 +43,34 @@ class GeoCoordinate {
 	 * @param p2 
 	 */
 	distanceTo( p2: GeoCoordinate ): number {
-		const p1 = this;
-		const R = 6371e3; // metres
-		const φ1 = p1.lat;
-		const φ2 = p2.lat;
-		const Δφ = p2.lat - p1.lat;
-		const Δλ = p2.lon - p1.lon;
+		const R = 6371008.8;
+
+		const φ1 = this.rad(this.lat);
+		const φ2 = this.rad(p2.lat);
+		const Δφ = this.rad(p2.lat - this.lat);
+		const Δλ = this.rad(p2.lon - this.lon);
 
 		const a = Math.sin( Δφ / 2 ) * Math.sin( Δφ / 2 ) + Math.cos( φ1 ) * Math.cos( φ2 ) * Math.sin( Δλ / 2 ) * Math.sin( Δλ / 2 );
-		const c = 2 * Math.atan2( Math.sqrt( a ), Math.sqrt( 1 - a ) );
-
-		const d = R * c;
-		return d;
+		return R * 2 * Math.atan2( Math.sqrt( a ), Math.sqrt( 1 - a ) );
 	}
 
 	bearingTo( p2: GeoCoordinate ): number {
-		const p1 = this;
-		const y = Math.sin( p2.lon - p1.lon ) * Math.cos( p2.lat );
-		const x = Math.cos( p1.lat ) * Math.sin( p2.lat ) - Math.sin( p1.lat ) * Math.cos( p2.lat ) * Math.cos( p2.lon - p1.lon );
-		const brng = Math.atan2( y, x );
-		return brng;
+
+		const φ1 = this.rad(this.lat);
+		const φ2 = this.rad(p2.lat);
+		const Δφ = this.rad(p2.lat - this.lat);
+		const Δλ = this.rad(p2.lon - this.lon);
+
+		const y = Math.sin( Δλ ) * Math.cos( φ2 );
+		const x = Math.cos( φ1 ) * Math.sin( φ2 ) - Math.sin( φ1 ) * Math.cos( φ2 ) * Math.cos( Δλ );
+		return Math.atan2( y, x );
+	}
+
+	rad( degrees ) {
+		return Number( degrees * ( Math.PI / 180 ));
+	}
+	deg( radians ) {
+		return radians * 180 / Math.PI;
 	}
 
 	// /**
@@ -85,14 +93,14 @@ class GeoCoordinate {
 
 		if ( this._ele ) {
 			return new Vector3(
-				distance * Math.cos( bearing ),
 				distance * Math.sin( bearing ),
+				distance * Math.cos( bearing ),
 				this._ele
 			);
 		}
 		return new Vector3(
-			distance * Math.cos( bearing ),
 			distance * Math.sin( bearing ),
+			distance * Math.cos( bearing ),
 			0
 		);
 	}
