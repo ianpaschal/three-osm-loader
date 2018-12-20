@@ -1,5 +1,4 @@
 import XML2JS from "xml2js";
-import FS from "fs";
 import cleanXML from "../utils/cleanXML";
 import calcCenter from "../utils/calcCenter";
 import GeoCoordinate from "./GeoCoordinate";
@@ -7,10 +6,7 @@ import {
 	DefaultLoadingManager,
 	FileLoader,
 	Geometry,
-	Line,
-	LoadingManager,
-	LineBasicMaterial,
-	Object3D
+	LoadingManager
 } from "three";
 
 const defaultOnError = function defaultOnError( err ) {
@@ -80,7 +76,7 @@ class OSMLoader {
 
 	}
 
-	build( input ) {
+	build( input: any ): Geometry[] {
 		// Build the geometry!
 
 		// Find the center
@@ -88,16 +84,11 @@ class OSMLoader {
 			new GeoCoordinate( input.bounds[ 0 ].maxlat, input.bounds[ 0 ].maxlon ),
 			new GeoCoordinate( input.bounds[ 0 ].minlat, input.bounds[ 0 ].minlon )
 		);
-		console.log(center)
 
-		const buildings = [];
+		const geometries = [];
 		// Collect ways with the "building" tag
 		input.way.forEach( ( way ) => {
 			if ( way.tags && way.tags.building ) {
-				// console.log( "Found a building with", way.nd, "nodes." );
-				const material = new LineBasicMaterial({
-					color: 0xffffff
-				});
 				const geometry = new Geometry();
 				way.refs.forEach( ( ref ) => {
 					const data = input.node.find( ( node ) => {
@@ -107,15 +98,11 @@ class OSMLoader {
 						const coordinate = new GeoCoordinate( data.lat, data.lon );
 						geometry.vertices.push( coordinate.asCartesian( center ) );
 					}
-					// else {
-					// 	console.warn( "Couldn't find a node with ref", ref );
-					// }
-
 				});
-				buildings.push( new Line( geometry, material ) );
+				geometries.push( geometry );
 			}
 		});
-		return buildings;
+		return geometries;
 	}
 }
 export default OSMLoader;
