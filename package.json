@@ -8,7 +8,7 @@
     "build": "tsc",
     "lint": "eslint --fix --ext .ts src/** tests/**",
     "test": "jest --silent --config jest.json",
-    "predemo": "tsc",
+    "predemo": "npm run build",
     "demo": "parcel demo/index.html --out-dir demo/dist"
   },
   "repository": {
