@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@types/jest": "23.3.10",
-    "@types/three": "0.93.12",
+    "@types/three": "0.103.2",
     "eslint": "5.9.0",
     "jest": "^24.8.0",
     "parcel-bundler": "^1.12.3",
