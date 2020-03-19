@@ -24,7 +24,7 @@
   "dependencies": {
     "three": "0.94.0",
     "three-orbit-controls": "^82.1.0",
-    "xml2js": "0.4.19"
+    "xml2js": "0.4.23"
   },
   "devDependencies": {
     "@types/jest": "23.3.10",
