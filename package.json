@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/ianpaschal/three-osm-loader#readme",
   "dependencies": {
-    "three": "0.94.0",
+    "three": "0.125.0",
     "three-orbit-controls": "^82.1.0",
     "xml2js": "0.4.19"
   },
